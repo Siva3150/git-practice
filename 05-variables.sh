@@ -10,5 +10,5 @@ echo "please enter your password::"
 
 read PASSWORD
 
-echo "Password entered is::"
+echo "Password entered is:: $PASSWORD"
 
