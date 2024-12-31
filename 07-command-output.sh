@@ -2,4 +2,4 @@
 
 DATE=$(date +%F)
 
-echo " The command output is :: $DATE "
+echo " Today's date is :: $DATE "
