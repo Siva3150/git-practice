@@ -7,7 +7,7 @@ then
 echo "please run this script with root previleges"
 fi
 
-dnf list installed git
+dnf list installed mysql
 
 if [ $? -ne 0 ]
 then
