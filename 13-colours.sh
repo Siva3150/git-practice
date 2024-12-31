@@ -11,7 +11,7 @@ N="\e[0m"
 Check_root() {
     if [ $USERID -ne 0 ]
     then
-    echo -e " $R please run this script with root previleges $N "
+    echo -e " $R please run this script with root previleges "
     exit 1
 fi
 
