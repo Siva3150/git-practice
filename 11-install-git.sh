@@ -7,4 +7,11 @@ then
 echo "please run this script with root previleges"
 fi
 
-dnf install mysql -y
+dnf list installed git
+
+if [ $? -ne 0 ]
+then
+echo "Git is not installed, going to install it"
+else
+echo "Git is already installed nothing to do ..."
+fi
