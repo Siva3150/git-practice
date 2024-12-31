@@ -8,7 +8,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-Check_root() {
+check_root() {
     if [ $USERID -ne 0 ]
     then
     echo  "please run this script with root previleges"
@@ -17,9 +17,9 @@ fi
 
 }
 
-Check_root 
+check_root 
 
-Validate() {
+validate() {
     if [ $1 -ne 0 ]
     then
         echo -e "  $2 is... $R failure $N "
@@ -34,7 +34,7 @@ if [ $? -ne 0 ]
 then
     echo "mysql is not installed, going to install it"
     dnf install mysql -y # here installing
-    Validate $? "Installing mysql"
+    validate $? "Installing mysql"
 else
 echo "mysql is already installed nothing to do ..."
 fi
