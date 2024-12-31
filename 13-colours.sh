@@ -22,9 +22,9 @@ Check_root
 Validate() {
     if [ $1 -ne 0 ]
     then
-        echo -e " $R $2 is... failure $N "
+        echo -e "  $2 is... $R failure $N "
     else
-        echo -e " $G $2 is... success... $N "
+        echo -e "  $2 is... $G success... $N "
     fi
 }
 
