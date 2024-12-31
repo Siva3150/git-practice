@@ -12,7 +12,7 @@ fi
 
 }
 
-check_root 
+Check_root 
 
 Validate() {
     if [ $1 -ne 0 ]
@@ -29,7 +29,7 @@ if [ $? -ne 0 ]
 then
     echo "mysql is not installed, going to install it"
     dnf install mysql -y # here installing
-    validate $? "Installing mysql"
+    Validate $? "Installing mysql"
 else
 echo "mysql is already installed nothing to do ..."
 fi
