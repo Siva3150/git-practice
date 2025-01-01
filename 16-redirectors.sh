@@ -40,7 +40,7 @@ usage () {
 
 check_root
 
-if [ $@ eq 0 ]
+if [ $# -eq 0 ]
 then 
     usage
 fi
