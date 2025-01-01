@@ -3,7 +3,7 @@
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIME_STAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FOLDER="$LOGS_FOLDER/$SCRIPT_NAME/$TIME_STAMP.log"
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME/$TIME_STAMP.log"
 mkdir -p $LOGS_FOLDER
 
 USERID=$(id -u)
@@ -17,7 +17,7 @@ N="\e[0m"
 check_root() {
     if [ $USERID -ne 0 ]
     then
-    echo  "please run this script with root previleges"
+    echo  "please run this script with root previleges" &>> $LOG_FILE
     exit 1
 fi
 
@@ -26,9 +26,9 @@ fi
 validate() {
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is... $R failure $N"
+        echo -e "$2 is... $R failure $N" &>> $LOG_FILE
     else
-        echo -e "$2 is... $Y success... $N"
+        echo -e "$2 is... $Y success... $N" &>> $LOG_FILE
     fi
 }
 
@@ -37,7 +37,7 @@ usage () {
     exit 1
 }
 
-echo "Script started executing at: $(date)"
+echo "Script started executing at: $(date)" &>> $LOG_FILE
 
 
 check_root
@@ -54,11 +54,11 @@ do
   dnf list installed $package
   if [ $? -ne 0 ]
   then 
-      echo "installing $package is not installed, going to install it"
+      echo "installing $package is not installed, going to install it" &>> $LOG_FILE
       dnf install $package -y
       validate $? "Installing $package"
   else
-      echo "$package is already installed nothing to do ..."
+      echo "$package is already installed nothing to do ..." &>> $LOG_FILE
   fi
 
 done
