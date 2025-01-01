@@ -37,6 +37,8 @@ usage () {
     exit 1
 }
 
+echo "Script started executing at: $(date)
+
 
 check_root
 
