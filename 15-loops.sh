@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for package in $@
+for package in $@ 
 do
  echo $package
 done
