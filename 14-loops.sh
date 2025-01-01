@@ -2,7 +2,7 @@
 
 for i in {0..10} #0-10
 do
-  echo $I
+  echo $i
 done
 
 # echo "1"
