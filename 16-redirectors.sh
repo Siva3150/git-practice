@@ -15,22 +15,22 @@ N="\e[0m"
 check_root() {
     if [ $USERID -ne 0 ]
     then
-    echo -e "$R please run this script with root previleges $N" | tee -a $LOG_FILE
-    exit 1
-fi
-
+       echo -e "$R please run this script with root previleges $N" | tee -a $LOG_FILE
+       exit 1
+   fi
 }
 
 validate() {
     if [ $1 -ne 0 ]
     then
         echo -e "$2 is... $R failure $N" | tee -a $LOGFILE
+        exit 1
     else
         echo -e "$2 is... $Y success... $N" | tee -a $LOGFILE 
     fi
 }
 
-usage () {
+usage() {
     echo -e "$R Usage:: $N sudo sh 16-redirectors.sh package1 package2 ......"
     exit 1
 }
@@ -45,18 +45,15 @@ then
     usage
 fi
 
-# sh 15-loops.sh git mysql postfix nginx
-
 for package in $@  # $@ refers to all arguments passed to it
 do
-  dnf list installed $package &>> $LOG_FILE
+  dnf list installed $package &>>$LOG_FILE
   if [ $? -ne 0 ]
   then 
-      echo "installing $package is not installed, going to install it" | tee -a $LOGFILE
-      dnf install $package -y &>> $LOG_FILE
+      echo "installing $package is not installed, going to install it..." | tee -a $LOGFILE
+      dnf install $package -y &>>$LOG_FILE
       validate $? "Installing $package"
   else
-      echo -E "$package is already $Y installed nothing to do ... $N" | tee -a $LOGFILE
+      echo -e "$package is already $Y installed nothing to do ... $N" | tee -a $LOGFILE
   fi
-
 done
