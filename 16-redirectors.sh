@@ -17,7 +17,7 @@ N="\e[0m"
 check_root() {
     if [ $USERID -ne 0 ]
     then
-    echo  "please run this script with root previleges" &>> $LOG_FILE
+    echo  "please run this script with root previleges" | tee -a $LOG_FILE
     exit 1
 fi
 
@@ -26,9 +26,9 @@ fi
 validate() {
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is... $R failure $N" &>> $LOG_FILE
+        echo -e "$2 is... $R failure $N" | tee -a $LOGFILE
     else
-        echo -e "$2 is... $Y success... $N" &>> $LOG_FILE
+        echo -e "$2 is... $Y success... $N" | tee -a $LOGFILE 
     fi
 }
 
@@ -37,7 +37,7 @@ usage () {
     exit 1
 }
 
-echo "Script started executing at: $(date)" &>> $LOG_FILE
+echo "Script started executing at: $(date)" | tee -a $LOGFILE
 
 
 check_root
@@ -54,11 +54,11 @@ do
   dnf list installed $package
   if [ $? -ne 0 ]
   then 
-      echo "installing $package is not installed, going to install it" &>> $LOG_FILE
+      echo "installing $package is not installed, going to install it" | tee -a $LOGFILE
       dnf install $package -y
       validate $? "Installing $package"
   else
-      echo "$package is already installed nothing to do ..." &>> $LOG_FILE
+      echo "$package is already installed nothing to do ..." | tee -a $LOGFILE
   fi
 
 done
