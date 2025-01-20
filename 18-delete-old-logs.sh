@@ -6,7 +6,7 @@ G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
 
-while [ -d $SOURCE_DIR ]
+if [ -d $SOURCE_DIR ]
 then
     echo -e "$SOURCE_DIR $G Exists $N"
 else
