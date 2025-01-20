@@ -7,7 +7,7 @@ N="\e[0m"
 Y="\e[33m"
 
 while [ -d $SOURCE_DIR ]
-then 
+then
     echo -e "$SOURCE_DIR $G Exists $N"
 else
     echo -e "$SOURCE_DIR $R does not exist $N"
@@ -23,3 +23,4 @@ do
     echo "Deleting file: $file"
     rm -rf $file
 done <<< $FILES
+
